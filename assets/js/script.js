@@ -38,10 +38,12 @@ const headerOffset = () => (header ? header.getBoundingClientRect().height : 0) 
 // Scroll a little farther into those sections so their labels/headlines
 // sit closer to the sticky header when reached from the navigation.
 const sectionScrollAdjustments = {
-  home: 0,
+  // Home, Projects, and Team scroll a little farther into the section so
+  // the bottom of each composition is more visible in a typical desktop viewport.
+  home: 34,
   about: 0,
-  projects: 52,
-  founders: 54,
+  projects: 82,
+  founders: 84,
   contact: 46
 };
 
