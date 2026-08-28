@@ -178,3 +178,64 @@ a.contact-card:hover::after,a.contact-card:focus-visible::after{opacity:.9}
   .footer-center{padding-left:0;padding-top:16px;border-left:0;border-top:1px solid rgba(255,90,20,.2)}
   .footer-right{align-items:flex-start;text-align:left}
 }
+
+/* =========================================================
+   V18 — founder silhouette scale + positioning balance
+   ========================================================= */
+@media (min-width: 981px){
+  /* Adam: bring up in scale and keep on same baseline */
+  .founder-grid .founder-card:nth-child(1) .silhouette{
+    object-position:center bottom;
+    transform:translateY(8px) scale(1.10);
+  }
+  .founder-grid .founder-card:nth-child(1):hover .silhouette,
+  .founder-grid .founder-card:nth-child(1):focus .silhouette,
+  .founder-grid .founder-card:nth-child(1).revealed .silhouette,
+  .founder-grid .founder-card:nth-child(1).no-headshot:hover .silhouette,
+  .founder-grid .founder-card:nth-child(1).no-headshot:focus .silhouette,
+  .founder-grid .founder-card:nth-child(1).no-headshot.revealed .silhouette{
+    transform:translateY(8px) scale(1.14);
+  }
+
+  /* Braden: reduce slightly so the silhouette footprint matches the set */
+  .founder-grid .founder-card:nth-child(2) .silhouette{
+    object-position:center bottom;
+    transform:translateY(16px) scale(.82);
+  }
+  .founder-grid .founder-card:nth-child(2):hover .silhouette,
+  .founder-grid .founder-card:nth-child(2):focus .silhouette,
+  .founder-grid .founder-card:nth-child(2).revealed .silhouette,
+  .founder-grid .founder-card:nth-child(2).no-headshot:hover .silhouette,
+  .founder-grid .founder-card:nth-child(2).no-headshot:focus .silhouette,
+  .founder-grid .founder-card:nth-child(2).no-headshot.revealed .silhouette{
+    transform:translateY(16px) scale(.86);
+  }
+
+  /* Jai: lift slightly in visual presence and center the stance */
+  .founder-grid .founder-card:nth-child(3) .silhouette{
+    object-position:center bottom;
+    transform:translateY(10px) scale(.99);
+  }
+  .founder-grid .founder-card:nth-child(3):hover .silhouette,
+  .founder-grid .founder-card:nth-child(3):focus .silhouette,
+  .founder-grid .founder-card:nth-child(3).revealed .silhouette,
+  .founder-grid .founder-card:nth-child(3).no-headshot:hover .silhouette,
+  .founder-grid .founder-card:nth-child(3).no-headshot:focus .silhouette,
+  .founder-grid .founder-card:nth-child(3).no-headshot.revealed .silhouette{
+    transform:translateY(10px) scale(1.03);
+  }
+
+  /* David: increase size to better match the other three cards */
+  .founder-grid .founder-card:nth-child(4) .silhouette{
+    object-position:center bottom;
+    transform:translateY(8px) scale(1.08);
+  }
+  .founder-grid .founder-card:nth-child(4):hover .silhouette,
+  .founder-grid .founder-card:nth-child(4):focus .silhouette,
+  .founder-grid .founder-card:nth-child(4).revealed .silhouette,
+  .founder-grid .founder-card:nth-child(4).no-headshot:hover .silhouette,
+  .founder-grid .founder-card:nth-child(4).no-headshot:focus .silhouette,
+  .founder-grid .founder-card:nth-child(4).no-headshot.revealed .silhouette{
+    transform:translateY(8px) scale(1.12);
+  }
+}
