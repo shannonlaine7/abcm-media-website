@@ -239,3 +239,62 @@ a.contact-card:hover::after,a.contact-card:focus-visible::after{opacity:.9}
     transform:translateY(8px) scale(1.12);
   }
 }
+
+/* =========================================================
+   V19 — accessibility / WCAG 2.2 AA support
+   ========================================================= */
+
+/* Keyboard users can bypass repeated navigation. */
+.skip-link{
+  position:fixed;
+  left:16px;
+  top:12px;
+  z-index:9999;
+  padding:12px 16px;
+  border:2px solid var(--orange2);
+  border-radius:4px;
+  background:#050506;
+  color:#fff;
+  font-family:var(--sans);
+  font-weight:600;
+  transform:translateY(-160%);
+  transition:transform .18s ease;
+}
+.skip-link:focus{transform:translateY(0)}
+
+/* Strong, consistent keyboard focus that does not depend on color alone. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible{
+  outline:3px solid #ffb07a;
+  outline-offset:4px;
+}
+.founder-card:focus-visible{
+  outline:3px solid #ffb07a;
+  outline-offset:4px;
+  border-color:#ff7a33;
+}
+
+/* Raise contrast of small secondary text to AA levels. */
+.founder-status{color:#a49d96}
+.footer-center span,.footer-right span{color:#9b948d}
+
+/* Keep a visible text indicator as well as the orange underline for current nav. */
+.nav-links a[aria-current="location"]{color:#fff}
+.nav-links a[aria-current="location"]::after{transform:scaleX(1)}
+
+/* Honor users who request less animation/motion. */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    transition-delay:0ms !important;
+  }
+  .founder-card:hover,.founder-card:focus,.founder-card.revealed{
+    transform:none;
+  }
+}
+#main-content:focus{outline:none}

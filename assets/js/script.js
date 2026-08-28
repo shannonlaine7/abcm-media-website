@@ -3,31 +3,46 @@ const nav = document.querySelector('.nav-links');
 const header = document.querySelector('.site-header');
 
 if (toggle && nav) {
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
+  const setMenuState = (open) => {
+    nav.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  };
+
+  toggle.addEventListener('click', () => {
+    setMenuState(!nav.classList.contains('open'));
   });
 
   nav.querySelectorAll('a').forEach((a) => {
-    a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
+    a.addEventListener('click', () => setMenuState(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('open')) {
+      setMenuState(false);
+      toggle.focus();
+    }
   });
 }
 
-// Founder portrait reveal behavior.
+// Founder portrait reveal behavior. Cards operate as accessible toggle buttons.
 document.querySelectorAll('.founder-card').forEach((card) => {
+  const founderName = card.dataset.founderName || 'founder';
+
+  const setRevealed = (revealed) => {
+    card.classList.toggle('revealed', revealed);
+    card.setAttribute('aria-pressed', revealed ? 'true' : 'false');
+    card.setAttribute('aria-label', `${revealed ? 'Hide' : 'Reveal'} portrait of ${founderName}`);
+  };
+
   card.addEventListener('click', () => {
-    if (window.matchMedia('(hover: none)').matches) {
-      card.classList.toggle('revealed');
-    }
+    setRevealed(!card.classList.contains('revealed'));
   });
 
-  card.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      card.classList.toggle('revealed');
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setRevealed(!card.classList.contains('revealed'));
     }
   });
 });
@@ -51,7 +66,8 @@ function scrollToTarget(target, updateHistory = true) {
   if (!target) return;
   const extra = sectionScrollAdjustments[target.id] || 0;
   const y = target.getBoundingClientRect().top + window.scrollY - headerOffset() + extra;
-  window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: Math.max(0, y), behavior: reducedMotion ? 'auto' : 'smooth' });
 
   if (updateHistory && target.id) {
     history.pushState(null, '', `#${target.id}`);
@@ -97,7 +113,13 @@ function setActiveNav() {
   }
 
   navLinks.forEach((link) => {
-    link.classList.toggle('active', link === current.link);
+    const isCurrent = link === current.link;
+    link.classList.toggle('active', isCurrent);
+    if (isCurrent) {
+      link.setAttribute('aria-current', 'location');
+    } else {
+      link.removeAttribute('aria-current');
+    }
   });
 }
 
