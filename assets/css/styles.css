@@ -105,7 +105,6 @@ main section[id]{scroll-margin-top:108px}
 }
 /* Transparent silhouettes should sit naturally on the card background. */
 .portrait-stack img[src$="silhouette-clean.png"]{padding:8px 10px 0}
-.portrait-stack img[src$="jai-silhouette-clean.png"]{padding:8px 28px 0}
 
 /* Contact */
 .contact-section{
