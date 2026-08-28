@@ -82,3 +82,100 @@
   .portrait-stack{aspect-ratio:1.05}
   .founder-copy{padding:14px 16px 17px}
 }
+
+
+/* =========================================================
+   V11 — founder cleanup, anchor offsets, Contact + Footer
+   ========================================================= */
+
+/* Keep anchored sections clear of the sticky navigation. */
+html{scroll-padding-top:108px}
+main section[id]{scroll-margin-top:108px}
+
+/* Clean individual founder silhouettes. */
+.portrait-stack .silhouette{
+  object-fit:contain;
+  object-position:center bottom;
+  transform:scale(.88);
+  filter:contrast(1.04) brightness(.86) saturate(.96);
+}
+.reveal:hover .silhouette,.reveal:focus .silhouette,.reveal.revealed .silhouette,
+.no-headshot:hover .silhouette,.no-headshot:focus .silhouette,.no-headshot.revealed .silhouette{
+  transform:scale(.91);
+}
+/* Transparent silhouettes should sit naturally on the card background. */
+.portrait-stack img[src$="silhouette-clean.png"]{padding:8px 10px 0}
+.portrait-stack img[src$="jai-silhouette-clean.jpg"]{padding:6px 24px 0}
+
+/* Contact */
+.contact-section{
+  position:relative;
+  overflow:hidden;
+  border-top:1px solid rgba(255,90,20,.16);
+  border-bottom:1px solid rgba(255,90,20,.16);
+  background:linear-gradient(180deg,#080809 0%,#0c0909 50%,#060607 100%);
+  padding-top:88px;
+  padding-bottom:90px;
+}
+.contact-shell{position:relative;z-index:2}
+.contact-glow{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.contact-glow-left{width:390px;height:390px;left:-190px;top:-80px;background:rgba(255,82,10,.12)}
+.contact-glow-right{width:430px;height:430px;right:-210px;bottom:-170px;background:rgba(255,112,36,.09)}
+.contact-heading-row{display:grid;grid-template-columns:1.02fr .98fr;gap:82px;align-items:end}
+.contact-heading h2{font-family:var(--cond);font-style:italic;text-transform:uppercase;font-size:clamp(50px,5.6vw,76px);line-height:.88;margin:0;color:#f1efeb}
+.contact-heading h2 span{color:var(--orange)}
+.contact-intro{max-width:520px;justify-self:end;padding-bottom:5px}
+.contact-intro p{margin:0;color:#c8c2bb;font-size:17px;line-height:1.65}
+.contact-rule{height:1px;background:linear-gradient(90deg,var(--orange),rgba(255,90,20,.18) 58%,transparent);margin:38px 0 30px;position:relative}
+.contact-rule span{position:absolute;left:0;top:50%;width:9px;height:9px;border-radius:50%;background:var(--orange);transform:translate(-1px,-50%);box-shadow:0 0 15px rgba(255,90,20,.65)}
+.contact-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.contact-card{min-height:164px;display:flex;align-items:center;gap:20px;padding:25px 24px;border:1px solid rgba(255,90,20,.27);background:linear-gradient(145deg,rgba(15,15,17,.96),rgba(8,8,9,.98));position:relative;overflow:hidden;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.contact-card::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:.3;transition:opacity .28s}
+a.contact-card:hover,a.contact-card:focus-visible{transform:translateY(-4px);border-color:rgba(255,100,32,.65);box-shadow:0 18px 42px rgba(0,0,0,.32),0 0 24px rgba(255,90,20,.07)}
+a.contact-card:hover::after,a.contact-card:focus-visible::after{opacity:.9}
+.contact-card-primary{background:radial-gradient(circle at 15% 50%,rgba(255,88,15,.12),transparent 30%),linear-gradient(145deg,#101011,#080809)}
+.contact-icon{width:62px;height:62px;flex:0 0 62px;border:1px solid rgba(255,90,20,.45);border-radius:50%;display:grid;place-items:center;color:var(--orange);box-shadow:0 0 22px rgba(255,90,20,.08) inset}
+.contact-icon svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.contact-card-copy{min-width:0}
+.contact-label{display:block;font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:#8f8881;margin-bottom:5px}
+.contact-card-copy strong{display:block;font-family:var(--cond);text-transform:uppercase;font-size:25px;line-height:1;color:#f0ede9;font-style:italic}
+.contact-action{display:block;margin-top:10px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.07em;font-size:11px;color:var(--orange2)}
+.contact-card-open{padding-left:28px}
+.contact-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.contact-tags span{border:1px solid rgba(255,90,20,.26);padding:5px 8px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.08em;font-size:10px;color:#aaa39c;background:rgba(255,90,20,.025)}
+
+/* Footer */
+.site-footer{background:#040405;padding:23px 0 28px}
+.footer-inner{display:grid;grid-template-columns:220px 1fr auto;gap:34px;align-items:center}
+.footer-brand{display:block;width:190px}
+.footer-brand img{display:block;width:100%;mix-blend-mode:screen}
+.footer-center{display:flex;flex-direction:column;gap:3px;padding-left:30px;border-left:1px solid rgba(255,90,20,.25)}
+.footer-center strong{font-family:var(--cond);text-transform:uppercase;font-size:18px;letter-spacing:.045em}
+.footer-center span,.footer-right span{color:#79736d;font-size:11px}
+.footer-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;text-align:right}
+.footer-right a{font-family:var(--cond);text-transform:uppercase;letter-spacing:.07em;color:#d2ccc5;font-size:14px}
+.footer-right a:hover,.footer-right a:focus-visible{color:var(--orange2)}
+
+@media(max-width:980px){
+  html{scroll-padding-top:92px}
+  main section[id]{scroll-margin-top:92px}
+  .contact-heading-row{grid-template-columns:1fr;gap:24px}
+  .contact-intro{justify-self:start;max-width:760px}
+  .contact-cards{grid-template-columns:1fr 1fr}
+  .contact-card-open{grid-column:1/-1}
+  .footer-inner{grid-template-columns:190px 1fr auto}
+}
+@media(max-width:760px){
+  html{scroll-padding-top:78px}
+  main section[id]{scroll-margin-top:78px}
+  .contact-section{padding-top:70px;padding-bottom:72px}
+  .contact-heading h2{font-size:clamp(44px,13vw,62px)}
+  .contact-rule{margin:30px 0 24px}
+  .contact-cards{grid-template-columns:1fr}
+  .contact-card-open{grid-column:auto}
+  .contact-card{min-height:142px}
+  .footer-inner{grid-template-columns:1fr;gap:18px}
+  .footer-brand{width:170px}
+  .footer-center{padding-left:0;padding-top:16px;border-left:0;border-top:1px solid rgba(255,90,20,.2)}
+  .footer-right{align-items:flex-start;text-align:left}
+}
