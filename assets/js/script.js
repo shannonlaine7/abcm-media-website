@@ -34,9 +34,21 @@ document.querySelectorAll('.founder-card').forEach((card) => {
 
 const headerOffset = () => (header ? header.getBoundingClientRect().height : 0) + 12;
 
+// Some sections have generous top padding for the cinematic layout.
+// Scroll a little farther into those sections so their labels/headlines
+// sit closer to the sticky header when reached from the navigation.
+const sectionScrollAdjustments = {
+  home: 0,
+  about: 0,
+  projects: 52,
+  founders: 54,
+  contact: 46
+};
+
 function scrollToTarget(target, updateHistory = true) {
   if (!target) return;
-  const y = target.getBoundingClientRect().top + window.scrollY - headerOffset();
+  const extra = sectionScrollAdjustments[target.id] || 0;
+  const y = target.getBoundingClientRect().top + window.scrollY - headerOffset() + extra;
   window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
 
   if (updateHistory && target.id) {
