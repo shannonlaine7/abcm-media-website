@@ -12,3 +12,73 @@
 /* V9 founders responsive refinements */
 @media(max-width:980px){.founders-heading-row{grid-template-columns:1fr;gap:24px}.founders-intro{justify-self:start;max-width:760px}.founder-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.portrait-stack{aspect-ratio:.92}}
 @media(max-width:760px){.founders-section{padding-top:72px;padding-bottom:78px}.founders-heading h2{font-size:clamp(46px,14vw,64px)}.founders-rule{margin:30px 0 24px}.founder-grid{grid-template-columns:1fr}.founder-card{max-width:520px;width:100%;margin-inline:auto}.portrait-stack{aspect-ratio:.9}.founders-interaction{font-size:11px}.founder-copy h3{font-size:28px}}
+
+
+/* =========================================================
+   V10 — compact Projects + Founders cards
+   Keeps card labels and founder names visible in one view.
+   ========================================================= */
+
+/* Projects: shorten the visual and content areas so each card reads as one unit */
+@media (min-width: 981px){
+  .projects-section{padding-top:82px;padding-bottom:84px}
+  .projects-rule{margin:34px 0 28px}
+  .project-showcase{gap:18px}
+  .project-visual{height:160px}
+  .project-content{padding:17px 20px 20px;min-height:170px}
+  .project-meta{margin-bottom:13px;font-size:11px}
+  .project-content h3{font-size:25px;margin-bottom:9px;line-height:1}
+  .project-content p{font-size:12.5px;line-height:1.48}
+  .project-ghost{font-size:58px;bottom:0}
+  .project-frame-lines{inset:18px 24px 24px}
+  .project-light-a{width:72px;height:72px;right:38px;top:24px}
+  .project-light-b{width:34px;height:34px;right:67px;top:45px}
+  .project-scanlines{inset:18px}
+  .project-aperture{width:110px;height:110px;right:22px;top:24px}
+  .project-aperture::before{inset:18px}
+  .project-aperture::after{inset:36px}
+  .project-light-d{width:72px;height:72px;right:41px;top:43px}
+}
+
+/* Founders: shorter portrait area + full names/titles visible without extra scrolling */
+@media (min-width: 981px){
+  .founders-section{padding-top:78px;padding-bottom:84px}
+  .founders-rule{margin:30px 0 26px}
+  .founder-grid{gap:16px}
+  .founder-card-top{height:40px;padding:0 14px}
+  .portrait-stack{aspect-ratio:1.34}
+  .portrait-stack .silhouette{
+    object-fit:contain;
+    object-position:center center;
+    opacity:1;
+    filter:contrast(1.08) brightness(.72) saturate(.95);
+    transform:scale(.94);
+  }
+  .portrait-stack .headshot{
+    object-fit:cover;
+    object-position:center 22%;
+    transform:scale(1.04);
+  }
+  .reveal:hover .headshot,.reveal:focus .headshot,.reveal.revealed .headshot{transform:scale(1)}
+  .reveal:hover .silhouette,.reveal:focus .silhouette,.reveal.revealed .silhouette{transform:scale(.98)}
+  .no-headshot:hover .silhouette,.no-headshot:focus .silhouette,.no-headshot.revealed .silhouette{transform:scale(.98)}
+  .portrait-prompt{left:13px;bottom:11px;font-size:10px;padding-left:7px}
+  .coming-soon{left:13px;right:13px;bottom:11px;padding:10px 11px}
+  .founder-copy{padding:13px 14px 15px;min-height:72px}
+  .founder-copy h3{font-size:23px}
+  .founder-copy p{font-size:10.5px;margin-top:6px}
+}
+
+/* Keep the same compact intent on tablet/mobile while allowing comfortable stacking */
+@media (max-width:980px){
+  .project-visual{min-height:210px}
+  .project-content{min-height:210px;padding:22px}
+  .portrait-stack{aspect-ratio:1.08}
+  .portrait-stack .silhouette{object-fit:contain;transform:scale(.96)}
+}
+@media (max-width:760px){
+  .project-visual{height:180px;min-height:0}
+  .project-content{padding:18px 18px 21px}
+  .portrait-stack{aspect-ratio:1.05}
+  .founder-copy{padding:14px 16px 17px}
+}
